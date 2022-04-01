@@ -7,8 +7,7 @@ int main()
 {
 	bool map[100001] = {};
 
-	int N, K, result = 0;
-	int temp;
+	int N, K;
 
 	cin >> N >> K;
 
@@ -21,20 +20,20 @@ int main()
 		const auto [time, pos] = q.front();
 		q.pop();
 
-		// ÀÌ¹Ì ÇÑ¹ø °¬´ø°÷Àº Á¦¿Ü
+		// ì´ë¯¸ í•œë²ˆ ê°”ë˜ê³³ì€ ì œì™¸
 		if (map[pos])
 			continue;
 
 		map[pos] = true;
 
-		// Ã£¾ÒÀ¸¸é Ãâ·Â ÈÄ Á¾·á
+		// ì°¾ì•˜ìœ¼ë©´ ì¶œë ¥ í›„ ì¢…ë£Œ
 		if (pos == K)
 		{
 			cout << time << endl;
 			break;
 		}
 
-		// ÇöÀç ¿òÁ÷ÀÏ ¼ö ÀÖ´Â ¹üÀ§ Å½»ö
+		// í˜„ì¬ ì›€ì§ì¼ ìˆ˜ ìˆëŠ” ë²”ìœ„ íƒìƒ‰
 		q.push(make_pair(time + 1, pos + 1));
 		if (pos != 0)
 		{

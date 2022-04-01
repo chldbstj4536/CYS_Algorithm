@@ -21,11 +21,11 @@ int main()
 
 		auto& [bPassed, passTime] = map[pos];
 
-		// ¸ÊÀ» ÅëÇØ Áö³ª°£ °÷ÀÌ¸é¼­ ´õ ´ÊÀº½Ã°£¿¡ Áö³ª°£´Ù¸é °Ç³Ê ¶Ù°í, µµÂø½Ã°£º¸´Ù ¿À·¡ °É¸° ½Ã°£µéµµ °Ç³Ê ¶Ú´Ù.
+		// ë§µì„ í†µí•´ ì§€ë‚˜ê°„ ê³³ì´ë©´ì„œ ë” ëŠ¦ì€ì‹œê°„ì— ì§€ë‚˜ê°„ë‹¤ë©´ ê±´ë„ˆ ë›°ê³ , ë„ì°©ì‹œê°„ë³´ë‹¤ ì˜¤ëž˜ ê±¸ë¦° ì‹œê°„ë“¤ë„ ê±´ë„ˆ ë›´ë‹¤.
 		if ((bPassed && passTime < time) || time > result)
 			continue;
 
-		// Ã£¾ÒÀ¸¸é ÃÖ¼Ò°ª ÀúÀå ¹× ¹æ¹ý ¼ö Áõ°¡
+		// ì°¾ì•˜ìœ¼ë©´ ìµœì†Œê°’ ì €ìž¥ ë° ë°©ë²• ìˆ˜ ì¦ê°€
 		if (pos == K)
 		{
 			result = time;
@@ -33,12 +33,12 @@ int main()
 			continue;
 		}
 
-		// ¸Ê ¼¼ÆÃ
+		// ë§µ ì„¸íŒ…
 		bPassed = true;
 		passTime = time;
 
 
-		// ÇöÀç ¿òÁ÷ÀÏ ¼ö ÀÖ´Â ¹üÀ§ Å½»ö
+		// í˜„ìž¬ ì›€ì§ì¼ ìˆ˜ ìžˆëŠ” ë²”ìœ„ íƒìƒ‰
 		q.push(make_pair(time + 1, pos + 1));
 		if (pos != 0)
 		{

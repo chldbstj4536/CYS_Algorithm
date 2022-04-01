@@ -15,43 +15,43 @@ int main()
 
 	cin >> N;
 
-	// ±×¸² ¾ò±â
+	// ê·¸ë¦¼ ì–»ê¸°
 	for (int i = 0; i < N; ++i)
 	{
 		cin >> picture[i];
 	}
 
-	// ¿ÞÂÊ À§ºÎÅÍ ¿µ¿ª Å½»ö
+	// ì™¼ìª½ ìœ„ë¶€í„° ì˜ì—­ íƒìƒ‰
 	for (int i = 0; i < N; ++i)
 	{
 		for (int j = 0; j < N; ++j)
 		{
-			// ¿µ¿ªÀÇ °ª ¼³Á¤
+			// ì˜ì—­ì˜ ê°’ ì„¤ì •
 			int areaChar = picture[i][j];
 
-			// Å½»öÀ» Çß´ø °÷ÀÎÁö È®ÀÎ
+			// íƒìƒ‰ì„ í–ˆë˜ ê³³ì¸ì§€ í™•ì¸
 			if (!map[i][j])
 			{
-				// Â÷·Ê´ë·Î Å½»ö À§Ä¡ »ðÀÔ
+				// ì°¨ë¡€ëŒ€ë¡œ íƒìƒ‰ ìœ„ì¹˜ ì‚½ìž…
 				q.push(make_pair(i, j));
 
-				// Å½»öÇÏÁö ¾ÊÀº°÷ÀÌ±â¿¡ »õ·Î¿î ¿µ¿ª
+				// íƒìƒ‰í•˜ì§€ ì•Šì€ê³³ì´ê¸°ì— ìƒˆë¡œìš´ ì˜ì—­
 				++result;
 
-				// »õ·Î¿î ¿µ¿ª ±¸¿ª Å½»ö
+				// ìƒˆë¡œìš´ ì˜ì—­ êµ¬ì—­ íƒìƒ‰
 				while (!q.empty())
 				{
 					auto [row, coloum] = q.front();
 					q.pop();
 
-					// ÀÚ±â ±¸¿ªÀÌ ¾Æ´Ï°í ÀÌ¹Ì Å½»öÁ™´ø°÷ÀÌ¶ó¸é ÆÐ½º
+					// ìžê¸° êµ¬ì—­ì´ ì•„ë‹ˆê³  ì´ë¯¸ íƒìƒ‰í—€ë˜ê³³ì´ë¼ë©´ íŒ¨ìŠ¤
 					if (map[row][coloum] || picture[row][coloum] != areaChar)
 						continue;
 
-					// Å½»ö ¿Ï·á Ç¥½Ã
+					// íƒìƒ‰ ì™„ë£Œ í‘œì‹œ
 					map[row][coloum] = true;
 
-					// ÀÚ½ÅÀÇ ÁÖº¯¿µ¿ªÀÌ ¸·´Ù¸¥ °÷ÀÌ°Å³ª Å½»öÇß´ø°÷ÀÌ ¾Æ´Ï¶ó¸é Å½»ö ¹üÀ§ Ãß°¡
+					// ìžì‹ ì˜ ì£¼ë³€ì˜ì—­ì´ ë§‰ë‹¤ë¥¸ ê³³ì´ê±°ë‚˜ íƒìƒ‰í–ˆë˜ê³³ì´ ì•„ë‹ˆë¼ë©´ íƒìƒ‰ ë²”ìœ„ ì¶”ê°€
 					if (row != 0)			q.push(make_pair(row - 1, coloum));
 					if (row != N - 1)		q.push(make_pair(row + 1, coloum));
 					if (coloum != 0)		q.push(make_pair(row, coloum - 1));
@@ -59,10 +59,10 @@ int main()
 				}
 			}
 
-			// Àû·Ï ¿µ¿ª Å½»öÀ» Çß´ø °÷ÀÎÁö È®ÀÎ
+			// ì ë¡ ì˜ì—­ íƒìƒ‰ì„ í–ˆë˜ ê³³ì¸ì§€ í™•ì¸
 			if (!mapRG[i][j])
 			{
-				// À§¿Í µ¿ÀÏ
+				// ìœ„ì™€ ë™ì¼
 				q.push(make_pair(i, j));
 				++resultRG;
 
@@ -74,22 +74,20 @@ int main()
 					if (mapRG[row][coloum])
 						continue;
 
-					// Å½»ö ¿µ¿ª ¹®ÀÚ°¡ ÆÄ¶ûÀÌ¸é
+					// íƒìƒ‰ ì˜ì—­ ë¬¸ìžê°€ íŒŒëž‘ì´ë©´
 					if (areaChar == 'B')
 					{
-						// ÆÄ¶ûÀÌ ¾Æ´Ò°æ¿ì ÆÐ½º
+						// íŒŒëž‘ì´ ì•„ë‹ê²½ìš° íŒ¨ìŠ¤
 						if (picture[row][coloum] != areaChar)
 							continue;
 					}
-					// Å½»ö ¿µ¿ªÀÌ Àû·ÏÀÌ¸é
+					// íƒìƒ‰ ì˜ì—­ì´ ì ë¡ì´ë©´
 					else
 					{
-						// ÆÄ¶ûÀÏ °æ¿ì ÆÐ½º
+						// íŒŒëž‘ì¼ ê²½ìš° íŒ¨ìŠ¤
 						if (picture[row][coloum] == 'B')
 							continue;
 					}
-
-
 
 					mapRG[row][coloum] = true;
 
